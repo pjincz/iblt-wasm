@@ -14,17 +14,26 @@ EMFLAGS := -sMODULARIZE=1 -sEXPORT_ES6=1 -sENVIRONMENT=node,web,worker \
            -sALLOW_MEMORY_GROWTH=1 -sWASM_BIGINT=1 -sASSERTIONS=1 \
            -sEXPORTED_RUNTIME_METHODS=HEAPU8 -sEXPORTED_FUNCTIONS=$(EXPORTS)
 
-.PHONY: all test clean
+.PHONY: all test clean check-emxx
 all: dist/index.mjs dist/iblt.mjs dist/iblt.wasm
+
+check-emxx:
+	@version=$$("$(EMXX)" -dumpversion) || { echo "Error: cannot run $(EMXX). Install Emscripten 4+ and set EMSDK or EMXX." >&2; exit 1; }; \
+	major=$${version%%.*}; \
+	case "$$major" in ''|*[!0-9]*) echo "Error: unrecognized Emscripten version: $$version" >&2; exit 1;; esac; \
+	if [ "$$major" -lt 4 ]; then \
+		echo "Error: Emscripten 4+ required; $(EMXX) reports $$version. Set EMSDK or EMXX to a newer SDK." >&2; \
+		exit 1; \
+	fi
 
 dist:
 	mkdir -p "$@"
 
 # One compiler invocation produces both files, including under make -j.
-dist/iblt.mjs dist/iblt.wasm &: src/cpp/iblt-wrapper.cpp src/cpp/iblt.h Makefile | dist
+dist/iblt.mjs dist/iblt.wasm &: src/cpp/iblt-wrapper.cpp src/cpp/iblt.h Makefile | dist check-emxx
 	"$(EMXX)" $(CXXFLAGS) src/cpp/iblt-wrapper.cpp $(EMFLAGS) -o dist/iblt.mjs
 
-dist/index.mjs: src/index.mjs Makefile | dist
+dist/index.mjs: src/index.mjs Makefile | dist check-emxx
 	cp "$<" "$@"
 
 test: all
