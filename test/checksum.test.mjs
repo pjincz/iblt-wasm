@@ -9,10 +9,10 @@ test('all checksum lengths are prefixes of the same hash128 output', () => {
     try {
       for (const table of tables) table.add([key]);
       const wires = tables.map(table => table.serialize());
-      for (let bucket = 0; bucket < 4; bucket++) {
-        const sum = wires[3].slice(bucket * (4 + width + 16) + 4 + width, (bucket + 1) * (4 + width + 16));
+      for (let cell = 0; cell < 4; cell++) {
+        const sum = wires[3].slice(cell * (4 + width + 16) + 4 + width, (cell + 1) * (4 + width + 16));
         for (const [i, bytes] of [4, 8, 12, 16].entries()) {
-          const actual = wires[i].slice(bucket * (4 + width + bytes) + 4 + width, (bucket + 1) * (4 + width + bytes));
+          const actual = wires[i].slice(cell * (4 + width + bytes) + 4 + width, (cell + 1) * (4 + width + bytes));
           assert.deepEqual(actual, sum.slice(0, bytes));
         }
         // Previously checked against the official SMHasher reference (seed 11).
@@ -22,7 +22,7 @@ test('all checksum lengths are prefixes of the same hash128 output', () => {
   }
 });
 
-test('bucket selection uses the four seed-0 hash128 words', () => {
+test('cell selection uses the four seed-0 hash128 words', () => {
   const key = Uint8Array.from({ length: 16 }, (_, i) => i);
   // SMHasher x64_128 reference output, as four little-endian uint32 words.
   const words = [2442149680, 1145644213, 1982851141, 2878366806];
