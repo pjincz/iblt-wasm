@@ -1,0 +1,35 @@
+{
+  "diff": 1000,
+  "trials": 100,
+  "description": "Capacity only: 500 unique keys per endpoint; common records omitted because they cancel; no build timing",
+  "rows": [
+    {
+      "cells": 1500,
+      "wireBytes": 48000,
+      "success": 100,
+      "wrongResults": 0,
+      "trials": 100
+    },
+    {
+      "cells": 2000,
+      "wireBytes": 64000,
+      "success": 100,
+      "wrongResults": 0,
+      "trials": 100
+    },
+    {
+      "cells": 3000,
+      "wireBytes": 96000,
+      "success": 100,
+      "wrongResults": 0,
+      "trials": 100
+    },
+    {
+      "cells": 5000,
+      "wireBytes": 160000,
+      "success": 100,
+      "wrongResults": 0,
+      "trials": 100
+    }
+  ]
+}

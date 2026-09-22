@@ -1,0 +1,10 @@
+{
+  "iblt": "db28fd0fd213b37714e7dfdea3ca2ca67e9f1c09",
+  "minisketch": "a12f5de1c96e21d76f64bc647ae4f65e4fc1b636",
+  "gnunet": {
+    "version": "0.25.0",
+    "url": "https://ftpmirror.gnu.org/gnunet/gnunet-0.25.0.tar.gz",
+    "sha256": "2dea662ee8605946852af02d2806ca64fdadedcc718eeef6b86e0b26822c36ff"
+  },
+  "smhasher": "07bb4de10a63e8cc2e1724865454eba635742383"
+}

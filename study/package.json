@@ -1,0 +1,26 @@
+{
+  "name": "iblt-benchmark",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "bench": "node benchmark.mjs",
+    "bench:c:fetch": "python3 c-bench/fetch.py",
+    "bench:c:build": "python3 c-bench/build.py",
+    "bench:c:check": "node c-bench/check.mjs",
+    "bench:c": "node c-bench/benchmark.mjs",
+    "bench:wide:build": "python3 c-bench/build-wide.py",
+    "bench:wide:check": "node c-bench/check-wide.mjs",
+    "bench:wide": "node c-bench/benchmark-wide.mjs",
+    "test:kv": "bash c-bench/test-kv.sh",
+    "bench:checksum:build": "python3 c-bench/build-checksum.py",
+    "bench:checksum:check": "bash c-bench/test-checksum.sh",
+    "bench:checksum": "node c-bench/benchmark-checksum.mjs",
+    "bench:dynamic:build": "python3 c-bench/build-dynamic.py",
+    "bench:dynamic:check": "bash c-bench/test-dynamic.sh",
+    "bench:dynamic": "node c-bench/benchmark-dynamic.mjs"
+  },
+  "dependencies": {
+    "@peerbit/riblt": "1.2.0",
+    "bloom-filters": "3.0.4"
+  }
+}

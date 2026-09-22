@@ -1,0 +1,7 @@
+
+> bench:checksum:check
+> bash c-bench/test-checksum.sh
+
+hash96(00..0f, seed=11): 409bf1ed862b82df7d98d374
+PASS: 60000 reference comparisons per hash variant; counter overflow guards; bucket sizeof assertions
+PASS: WASM hash vector, every key byte, zero/ff keys, positive/negative differences, clone/remove, roundtrip, legacy32 wire equality, checksum residuals, overloaded decode

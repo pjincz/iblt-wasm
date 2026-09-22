@@ -1,0 +1,6 @@
+
+> bench:dynamic:check
+> bash c-bench/test-dynamic.sh
+
+PASS: 38400 reference comparisons per hash; lengths 4..256 step4; unaligned keys; 28 overflow/layout configurations
+PASS: 48 WASM configurations; every key byte, +/- differences, clone/remove, roundtrip, fixed wire compatibility, every checksum byte, overloaded decode, invalid inputs

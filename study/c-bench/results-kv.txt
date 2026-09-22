@@ -1,0 +1,9 @@
+get A[42]=old!
+get changed[42]=new!
+same key, same value: success=true A-only=[] B-only=[]
+same key, DIFFERENT value: success=true A-only=[] B-only=[]
+different keys: success=true A-only=[(42, old!)] B-only=[(43, new!)]
+entry exists on only one side: success=true A-only=[(42, old!)] B-only=[]
+erase old pair + insert new pair: get[42]=new!
+old snapshot vs updated snapshot: success=true A-only=[] B-only=[]
+All behavior assertions passed. Value-only changes are NOT detected in this example.

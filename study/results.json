@@ -1,0 +1,420 @@
+{
+  "environment": {
+    "node": "v24.21.0",
+    "platform": "linux",
+    "arch": "x64",
+    "cpu": "Intel(R) Core(TM) Ultra 7 258V"
+  },
+  "config": {
+    "n": 10000,
+    "differences": 100,
+    "onlyEachSide": 50,
+    "trials": 10,
+    "warmups": 2,
+    "cells": 200,
+    "hashCount": 3
+  },
+  "versions": {
+    "bloom-filters": "3.0.4",
+    "@peerbit/riblt": "1.2.0"
+  },
+  "summary": [
+    {
+      "name": "bloom-filters SHA1-160",
+      "success": "7/10",
+      "senderBuildMs": 795.181,
+      "receiverBuildMs": 807.553,
+      "encodeMs": 0,
+      "wireCodecMs": 5.84,
+      "decodeMs": 34.597,
+      "totalMs": 1645.773,
+      "wireBytes": 7309,
+      "symbols": 200,
+      "p95TotalMs": 1749.313
+    },
+    {
+      "name": "bloom-filters SHA1-prefix64",
+      "success": "8/10",
+      "senderBuildMs": 680.907,
+      "receiverBuildMs": 665.891,
+      "encodeMs": 0,
+      "wireCodecMs": 5.888,
+      "decodeMs": 26.806,
+      "totalMs": 1390.644,
+      "wireBytes": 4911,
+      "symbols": 200,
+      "p95TotalMs": 1512.854
+    },
+    {
+      "name": "@peerbit/riblt SHA1-prefix64",
+      "success": "10/10",
+      "senderBuildMs": 1.457,
+      "receiverBuildMs": 1.373,
+      "encodeMs": 16.038,
+      "wireCodecMs": 0.809,
+      "decodeMs": 15.765,
+      "totalMs": 35.382,
+      "wireBytes": 3408,
+      "symbols": 142,
+      "p95TotalMs": 59.544
+    }
+  ],
+  "runs": {
+    "bloom-filters SHA1-160": [
+      {
+        "success": true,
+        "recovered": 100,
+        "senderBuildMs": 898.4956400000001,
+        "receiverBuildMs": 781.0862510000006,
+        "encodeMs": 0,
+        "wireCodecMs": 8.668648999999277,
+        "decodeMs": 36.220792000000074,
+        "totalMs": 1724.471332,
+        "wireBytes": 7296,
+        "symbols": 200
+      },
+      {
+        "success": true,
+        "recovered": 100,
+        "senderBuildMs": 782.0961150000003,
+        "receiverBuildMs": 816.2209999999995,
+        "encodeMs": 0,
+        "wireCodecMs": 5.839598000000478,
+        "decodeMs": 32.32749100000001,
+        "totalMs": 1636.4842040000003,
+        "wireBytes": 7310,
+        "symbols": 200
+      },
+      {
+        "success": false,
+        "recovered": 98,
+        "senderBuildMs": 870.801066,
+        "receiverBuildMs": 834.7774829999998,
+        "encodeMs": 0,
+        "wireCodecMs": 6.485457999999198,
+        "decodeMs": 37.248632000002544,
+        "totalMs": 1749.3126390000016,
+        "wireBytes": 7309,
+        "symbols": 200
+      },
+      {
+        "success": true,
+        "recovered": 100,
+        "senderBuildMs": 716.5499549999986,
+        "receiverBuildMs": 818.6541600000019,
+        "encodeMs": 0,
+        "wireCodecMs": 5.102640999997675,
+        "decodeMs": 34.59695500000089,
+        "totalMs": 1574.903710999999,
+        "wireBytes": 7311,
+        "symbols": 200
+      },
+      {
+        "success": false,
+        "recovered": 96,
+        "senderBuildMs": 795.180601,
+        "receiverBuildMs": 807.5531760000013,
+        "encodeMs": 0,
+        "wireCodecMs": 5.6391269999985525,
+        "decodeMs": 39.27778799999942,
+        "totalMs": 1647.6506919999993,
+        "wireBytes": 7299,
+        "symbols": 200
+      },
+      {
+        "success": true,
+        "recovered": 100,
+        "senderBuildMs": 617.5106989999986,
+        "receiverBuildMs": 806.8233050000017,
+        "encodeMs": 0,
+        "wireCodecMs": 5.308573999998771,
+        "decodeMs": 31.281739000001835,
+        "totalMs": 1460.9243170000009,
+        "wireBytes": 7317,
+        "symbols": 200
+      },
+      {
+        "success": true,
+        "recovered": 100,
+        "senderBuildMs": 810.8710019999999,
+        "receiverBuildMs": 795.0018369999998,
+        "encodeMs": 0,
+        "wireCodecMs": 6.1540770000028715,
+        "decodeMs": 33.74657499999739,
+        "totalMs": 1645.773491,
+        "wireBytes": 7312,
+        "symbols": 200
+      },
+      {
+        "success": true,
+        "recovered": 100,
+        "senderBuildMs": 858.3755719999972,
+        "receiverBuildMs": 841.6699140000019,
+        "encodeMs": 0,
+        "wireCodecMs": 5.201827000000776,
+        "decodeMs": 37.02726899999834,
+        "totalMs": 1742.2745819999982,
+        "wireBytes": 7309,
+        "symbols": 200
+      },
+      {
+        "success": false,
+        "recovered": 98,
+        "senderBuildMs": 739.6087149999948,
+        "receiverBuildMs": 691.2392190000028,
+        "encodeMs": 0,
+        "wireCodecMs": 6.451165999998921,
+        "decodeMs": 37.3311790000007,
+        "totalMs": 1474.6302789999972,
+        "wireBytes": 7303,
+        "symbols": 200
+      },
+      {
+        "success": true,
+        "recovered": 100,
+        "senderBuildMs": 843.0929800000013,
+        "receiverBuildMs": 849.012867999998,
+        "encodeMs": 0,
+        "wireCodecMs": 10.945826000002853,
+        "decodeMs": 33.9908329999962,
+        "totalMs": 1737.0425069999983,
+        "wireBytes": 7312,
+        "symbols": 200
+      }
+    ],
+    "bloom-filters SHA1-prefix64": [
+      {
+        "success": true,
+        "recovered": 100,
+        "senderBuildMs": 684.1228259999989,
+        "receiverBuildMs": 640.2291260000002,
+        "encodeMs": 0,
+        "wireCodecMs": 11.392422000000806,
+        "decodeMs": 24.954491000000417,
+        "totalMs": 1360.6988650000003,
+        "wireBytes": 4914,
+        "symbols": 200
+      },
+      {
+        "success": true,
+        "recovered": 100,
+        "senderBuildMs": 667.5548500000004,
+        "receiverBuildMs": 642.6526209999993,
+        "encodeMs": 0,
+        "wireCodecMs": 5.715301000000181,
+        "decodeMs": 27.949855000000753,
+        "totalMs": 1343.8726270000006,
+        "wireBytes": 4920,
+        "symbols": 200
+      },
+      {
+        "success": true,
+        "recovered": 100,
+        "senderBuildMs": 680.9558969999998,
+        "receiverBuildMs": 741.0266580000007,
+        "encodeMs": 0,
+        "wireCodecMs": 5.56251599999996,
+        "decodeMs": 22.31108999999924,
+        "totalMs": 1449.8561609999997,
+        "wireBytes": 4914,
+        "symbols": 200
+      },
+      {
+        "success": true,
+        "recovered": 100,
+        "senderBuildMs": 700.7347020000016,
+        "receiverBuildMs": 671.1398389999995,
+        "encodeMs": 0,
+        "wireCodecMs": 7.5227950000007695,
+        "decodeMs": 28.530769999997574,
+        "totalMs": 1407.9281059999994,
+        "wireBytes": 4912,
+        "symbols": 200
+      },
+      {
+        "success": false,
+        "recovered": 98,
+        "senderBuildMs": 684.4798599999995,
+        "receiverBuildMs": 654.0910899999981,
+        "encodeMs": 0,
+        "wireCodecMs": 5.466839000000618,
+        "decodeMs": 25.58355600000141,
+        "totalMs": 1369.6213449999996,
+        "wireBytes": 4894,
+        "symbols": 200
+      },
+      {
+        "success": true,
+        "recovered": 100,
+        "senderBuildMs": 645.4089280000007,
+        "receiverBuildMs": 789.3178689999986,
+        "encodeMs": 0,
+        "wireCodecMs": 5.14190900000176,
+        "decodeMs": 26.464312000000064,
+        "totalMs": 1466.3330180000012,
+        "wireBytes": 4910,
+        "symbols": 200
+      },
+      {
+        "success": false,
+        "recovered": 98,
+        "senderBuildMs": 640.279297000001,
+        "receiverBuildMs": 748.6085109999985,
+        "encodeMs": 0,
+        "wireCodecMs": 7.994566000001214,
+        "decodeMs": 31.948103999999148,
+        "totalMs": 1428.8304779999999,
+        "wireBytes": 4905,
+        "symbols": 200
+      },
+      {
+        "success": true,
+        "recovered": 100,
+        "senderBuildMs": 805.1948250000023,
+        "receiverBuildMs": 669.8315809999986,
+        "encodeMs": 0,
+        "wireCodecMs": 5.888021000002482,
+        "decodeMs": 31.939856999997573,
+        "totalMs": 1512.854284000001,
+        "wireBytes": 4913,
+        "symbols": 200
+      },
+      {
+        "success": true,
+        "recovered": 100,
+        "senderBuildMs": 680.9065369999989,
+        "receiverBuildMs": 665.8905299999969,
+        "encodeMs": 0,
+        "wireCodecMs": 7.962059000004956,
+        "decodeMs": 35.88497899999493,
+        "totalMs": 1390.6441049999958,
+        "wireBytes": 4910,
+        "symbols": 200
+      },
+      {
+        "success": true,
+        "recovered": 100,
+        "senderBuildMs": 677.9359179999956,
+        "receiverBuildMs": 630.3416010000001,
+        "encodeMs": 0,
+        "wireCodecMs": 9.293875000003027,
+        "decodeMs": 26.806141000000935,
+        "totalMs": 1344.3775349999996,
+        "wireBytes": 4911,
+        "symbols": 200
+      }
+    ],
+    "@peerbit/riblt SHA1-prefix64": [
+      {
+        "success": true,
+        "senderBuildMs": 2.1693450000002485,
+        "receiverBuildMs": 1.6038840000001073,
+        "encodeMs": 30.28460499999801,
+        "wireCodecMs": 2.0238780000045153,
+        "decodeMs": 16.739040000002205,
+        "totalMs": 52.998828000000685,
+        "wireBytes": 3000,
+        "symbols": 125
+      },
+      {
+        "success": true,
+        "senderBuildMs": 1.7538060000006226,
+        "receiverBuildMs": 1.691632000000027,
+        "encodeMs": 16.038326999991114,
+        "wireCodecMs": 0.9083409999948344,
+        "decodeMs": 14.754926999992676,
+        "totalMs": 35.31458999999995,
+        "wireBytes": 3336,
+        "symbols": 139
+      },
+      {
+        "success": true,
+        "senderBuildMs": 1.0093699999997625,
+        "receiverBuildMs": 1.0350440000001981,
+        "encodeMs": 10.356104999991658,
+        "wireCodecMs": 0.6314539999893896,
+        "decodeMs": 10.35723699999653,
+        "totalMs": 23.498961999999665,
+        "wireBytes": 3600,
+        "symbols": 150
+      },
+      {
+        "success": true,
+        "senderBuildMs": 1.3629650000002584,
+        "receiverBuildMs": 1.3734760000006645,
+        "encodeMs": 18.188310999987152,
+        "wireCodecMs": 1.1844109999583452,
+        "decodeMs": 16.472561000005953,
+        "totalMs": 38.98661300000094,
+        "wireBytes": 3216,
+        "symbols": 134
+      },
+      {
+        "success": true,
+        "senderBuildMs": 1.4208090000029188,
+        "receiverBuildMs": 1.3065779999997176,
+        "encodeMs": 15.892998000006628,
+        "wireCodecMs": 0.808707999996841,
+        "decodeMs": 15.764690999953018,
+        "totalMs": 35.3820510000005,
+        "wireBytes": 3576,
+        "symbols": 149
+      },
+      {
+        "success": true,
+        "senderBuildMs": 1.4956070000007458,
+        "receiverBuildMs": 1.4434399999991,
+        "encodeMs": 21.978479000001244,
+        "wireCodecMs": 1.2848100000010163,
+        "decodeMs": 32.946582999989914,
+        "totalMs": 59.544284999999945,
+        "wireBytes": 3264,
+        "symbols": 136
+      },
+      {
+        "success": true,
+        "senderBuildMs": 1.3767169999991893,
+        "receiverBuildMs": 1.3371569999981148,
+        "encodeMs": 16.232652000024245,
+        "wireCodecMs": 0.7713139999723353,
+        "decodeMs": 17.077776999998605,
+        "totalMs": 37.04131799999959,
+        "wireBytes": 4008,
+        "symbols": 167
+      },
+      {
+        "success": true,
+        "senderBuildMs": 1.650364000000991,
+        "receiverBuildMs": 1.3677779999998165,
+        "encodeMs": 14.879806999986613,
+        "wireCodecMs": 0.6451039999956265,
+        "decodeMs": 14.966102000027604,
+        "totalMs": 33.7025450000001,
+        "wireBytes": 3408,
+        "symbols": 142
+      },
+      {
+        "success": true,
+        "senderBuildMs": 1.8718759999974282,
+        "receiverBuildMs": 1.539238999997906,
+        "encodeMs": 20.171267999969132,
+        "wireCodecMs": 0.9861649999656947,
+        "decodeMs": 16.74634099999821,
+        "totalMs": 41.62068300000101,
+        "wireBytes": 3600,
+        "symbols": 150
+      },
+      {
+        "success": true,
+        "senderBuildMs": 1.4569209999972372,
+        "receiverBuildMs": 1.5391190000009374,
+        "encodeMs": 14.636068000007072,
+        "wireCodecMs": 0.5980320000016945,
+        "decodeMs": 14.504225000018778,
+        "totalMs": 32.88912600000185,
+        "wireBytes": 3720,
+        "symbols": 155
+      }
+    ]
+  }
+}
