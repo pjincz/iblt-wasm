@@ -1,0 +1,8 @@
+{
+  "src/cpp/dynamic-iblt.h": "690a4b714ed7efdf80f6ce616c9c19256688a16a10cc36525ab6ceae8a3ebd4a",
+  "src/cpp/dynamic-wrapper.cpp": "2d2ed26164fdf7eaf6c11bc3a569c8ff6b1fd39b512163a18c2346ab83458060",
+  "src/index.mjs": "a3ab6c9e26e45aa08a4e4a251de1b6f00e7bb1de97d6995a9bc41b06aad478fc",
+  "dist/iblt-dynamic.wasm": "d9b7f33747252e21447d9eb537382aff4f48717f844ea30f7c3f48ee245a6043",
+  "build/hash-indexes/iblt-dynamic.wasm": "2e30c73c635309193d4c39e5dc58899c1e0f85497870e48eefccf728ced2af7c",
+  "build/hash-analysis/prod-split-inline/iblt-dynamic.wasm": "e02da898d2b6ffc411ed160b09d7121f560c9d6436b2fec4bfcedd5ba9e84c7b"
+}

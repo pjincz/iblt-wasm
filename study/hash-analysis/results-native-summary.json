@@ -1,0 +1,562 @@
+[
+  {
+    "variant": "base",
+    "width": 4,
+    "name": "hash32_once",
+    "ms": 0.6705,
+    "nsPerKey": 2.27,
+    "sink": 1329743847
+  },
+  {
+    "variant": "base",
+    "width": 4,
+    "name": "hash128_once",
+    "ms": 1.2944,
+    "nsPerKey": 4.39,
+    "sink": 1895720460
+  },
+  {
+    "variant": "base",
+    "width": 4,
+    "name": "index32",
+    "ms": 3.183,
+    "nsPerKey": 10.79,
+    "sink": 735889410
+  },
+  {
+    "variant": "base",
+    "width": 4,
+    "name": "index128",
+    "ms": 2.4694,
+    "nsPerKey": 8.37,
+    "sink": 733758147
+  },
+  {
+    "variant": "base",
+    "width": 4,
+    "name": "index32_check",
+    "ms": 4.5031,
+    "nsPerKey": 15.27,
+    "sink": 2631609870
+  },
+  {
+    "variant": "base",
+    "width": 4,
+    "name": "index128_check",
+    "ms": 3.8661,
+    "nsPerKey": 13.11,
+    "sink": 2629478607
+  },
+  {
+    "variant": "base",
+    "width": 4,
+    "name": "updates",
+    "ms": 22.3297,
+    "nsPerKey": 75.72,
+    "sink": 10350206
+  },
+  {
+    "variant": "base",
+    "width": 16,
+    "name": "hash32_once",
+    "ms": 1.4012,
+    "nsPerKey": 4.75,
+    "sink": 2248831679
+  },
+  {
+    "variant": "base",
+    "width": 16,
+    "name": "hash128_once",
+    "ms": 1.5597,
+    "nsPerKey": 5.29,
+    "sink": 687229942
+  },
+  {
+    "variant": "base",
+    "width": 16,
+    "name": "index32",
+    "ms": 6.2692,
+    "nsPerKey": 21.26,
+    "sink": 734568093
+  },
+  {
+    "variant": "base",
+    "width": 16,
+    "name": "index128",
+    "ms": 2.6474,
+    "nsPerKey": 8.98,
+    "sink": 738481158
+  },
+  {
+    "variant": "base",
+    "width": 16,
+    "name": "index32_check",
+    "ms": 7.9294,
+    "nsPerKey": 26.89,
+    "sink": 1421798035
+  },
+  {
+    "variant": "base",
+    "width": 16,
+    "name": "index128_check",
+    "ms": 4.2658,
+    "nsPerKey": 14.46,
+    "sink": 1425711100
+  },
+  {
+    "variant": "base",
+    "width": 16,
+    "name": "updates",
+    "ms": 25.1809,
+    "nsPerKey": 85.38,
+    "sink": 17990986
+  },
+  {
+    "variant": "base",
+    "width": 20,
+    "name": "hash32_once",
+    "ms": 1.685,
+    "nsPerKey": 5.71,
+    "sink": 1899616986
+  },
+  {
+    "variant": "base",
+    "width": 20,
+    "name": "hash128_once",
+    "ms": 1.7914,
+    "nsPerKey": 6.07,
+    "sink": 1895476901
+  },
+  {
+    "variant": "base",
+    "width": 20,
+    "name": "index32",
+    "ms": 7.2176,
+    "nsPerKey": 24.47,
+    "sink": 735705549
+  },
+  {
+    "variant": "base",
+    "width": 20,
+    "name": "index128",
+    "ms": 2.8547,
+    "nsPerKey": 9.68,
+    "sink": 736759593
+  },
+  {
+    "variant": "base",
+    "width": 20,
+    "name": "index32_check",
+    "ms": 9.0555,
+    "nsPerKey": 30.71,
+    "sink": 2631182450
+  },
+  {
+    "variant": "base",
+    "width": 20,
+    "name": "index128_check",
+    "ms": 4.5495,
+    "nsPerKey": 15.43,
+    "sink": 2632236494
+  },
+  {
+    "variant": "base",
+    "width": 20,
+    "name": "updates",
+    "ms": 26.2045,
+    "nsPerKey": 88.86,
+    "sink": 20535266
+  },
+  {
+    "variant": "base",
+    "width": 32,
+    "name": "hash32_once",
+    "ms": 2.7904,
+    "nsPerKey": 9.46,
+    "sink": 2976121383
+  },
+  {
+    "variant": "base",
+    "width": 32,
+    "name": "hash128_once",
+    "ms": 2.2961,
+    "nsPerKey": 7.79,
+    "sink": 1254573445
+  },
+  {
+    "variant": "base",
+    "width": 32,
+    "name": "index32",
+    "ms": 12.2803,
+    "nsPerKey": 41.64,
+    "sink": 735903963
+  },
+  {
+    "variant": "base",
+    "width": 32,
+    "name": "index128",
+    "ms": 3.4324,
+    "nsPerKey": 11.64,
+    "sink": 736905726
+  },
+  {
+    "variant": "base",
+    "width": 32,
+    "name": "index32_check",
+    "ms": 13.9732,
+    "nsPerKey": 47.38,
+    "sink": 1990477408
+  },
+  {
+    "variant": "base",
+    "width": 32,
+    "name": "index128_check",
+    "ms": 6.0465,
+    "nsPerKey": 20.5,
+    "sink": 1991479171
+  },
+  {
+    "variant": "base",
+    "width": 32,
+    "name": "updates",
+    "ms": 34.3114,
+    "nsPerKey": 116.34,
+    "sink": 28158746
+  },
+  {
+    "variant": "base",
+    "width": 64,
+    "name": "hash32_once",
+    "ms": 5.4684,
+    "nsPerKey": 18.54,
+    "sink": 3956671768
+  },
+  {
+    "variant": "base",
+    "width": 64,
+    "name": "hash128_once",
+    "ms": 3.6622,
+    "nsPerKey": 12.42,
+    "sink": 716776849
+  },
+  {
+    "variant": "base",
+    "width": 64,
+    "name": "index32",
+    "ms": 22.3877,
+    "nsPerKey": 75.91,
+    "sink": 737631369
+  },
+  {
+    "variant": "base",
+    "width": 64,
+    "name": "index128",
+    "ms": 4.8284,
+    "nsPerKey": 16.37,
+    "sink": 737009073
+  },
+  {
+    "variant": "base",
+    "width": 64,
+    "name": "index32_check",
+    "ms": 26.6978,
+    "nsPerKey": 90.53,
+    "sink": 1454408218
+  },
+  {
+    "variant": "base",
+    "width": 64,
+    "name": "index128_check",
+    "ms": 8.7485,
+    "nsPerKey": 29.66,
+    "sink": 1453785922
+  },
+  {
+    "variant": "base",
+    "width": 64,
+    "name": "updates",
+    "ms": 51.7209,
+    "nsPerKey": 175.38,
+    "sink": 48560118
+  },
+  {
+    "variant": "split",
+    "width": 4,
+    "name": "hash32_once",
+    "ms": 0.644,
+    "nsPerKey": 2.18,
+    "sink": 1329743847
+  },
+  {
+    "variant": "split",
+    "width": 4,
+    "name": "hash128_once",
+    "ms": 1.2785,
+    "nsPerKey": 4.34,
+    "sink": 1895720460
+  },
+  {
+    "variant": "split",
+    "width": 4,
+    "name": "index32",
+    "ms": 3.1267,
+    "nsPerKey": 10.6,
+    "sink": 735889410
+  },
+  {
+    "variant": "split",
+    "width": 4,
+    "name": "index128",
+    "ms": 2.4562,
+    "nsPerKey": 8.33,
+    "sink": 733758147
+  },
+  {
+    "variant": "split",
+    "width": 4,
+    "name": "index32_check",
+    "ms": 4.4289,
+    "nsPerKey": 15.02,
+    "sink": 2631609870
+  },
+  {
+    "variant": "split",
+    "width": 4,
+    "name": "index128_check",
+    "ms": 3.5918,
+    "nsPerKey": 12.18,
+    "sink": 2629478607
+  },
+  {
+    "variant": "split",
+    "width": 4,
+    "name": "updates",
+    "ms": 19.781,
+    "nsPerKey": 67.07,
+    "sink": 10333686
+  },
+  {
+    "variant": "split",
+    "width": 16,
+    "name": "hash32_once",
+    "ms": 1.4064,
+    "nsPerKey": 4.77,
+    "sink": 2248831679
+  },
+  {
+    "variant": "split",
+    "width": 16,
+    "name": "hash128_once",
+    "ms": 1.553,
+    "nsPerKey": 5.27,
+    "sink": 687229942
+  },
+  {
+    "variant": "split",
+    "width": 16,
+    "name": "index32",
+    "ms": 6.4058,
+    "nsPerKey": 21.72,
+    "sink": 734568093
+  },
+  {
+    "variant": "split",
+    "width": 16,
+    "name": "index128",
+    "ms": 2.63,
+    "nsPerKey": 8.92,
+    "sink": 738481158
+  },
+  {
+    "variant": "split",
+    "width": 16,
+    "name": "index32_check",
+    "ms": 7.8219,
+    "nsPerKey": 26.52,
+    "sink": 1421798035
+  },
+  {
+    "variant": "split",
+    "width": 16,
+    "name": "index128_check",
+    "ms": 4.2028,
+    "nsPerKey": 14.25,
+    "sink": 1425711100
+  },
+  {
+    "variant": "split",
+    "width": 16,
+    "name": "updates",
+    "ms": 21.9895,
+    "nsPerKey": 74.56,
+    "sink": 17957728
+  },
+  {
+    "variant": "split",
+    "width": 20,
+    "name": "hash32_once",
+    "ms": 1.7935,
+    "nsPerKey": 6.08,
+    "sink": 1899616986
+  },
+  {
+    "variant": "split",
+    "width": 20,
+    "name": "hash128_once",
+    "ms": 1.8508,
+    "nsPerKey": 6.28,
+    "sink": 1895476901
+  },
+  {
+    "variant": "split",
+    "width": 20,
+    "name": "index32",
+    "ms": 7.5282,
+    "nsPerKey": 25.53,
+    "sink": 735705549
+  },
+  {
+    "variant": "split",
+    "width": 20,
+    "name": "index128",
+    "ms": 2.8929,
+    "nsPerKey": 9.81,
+    "sink": 736759593
+  },
+  {
+    "variant": "split",
+    "width": 20,
+    "name": "index32_check",
+    "ms": 9.4723,
+    "nsPerKey": 32.12,
+    "sink": 2631182450
+  },
+  {
+    "variant": "split",
+    "width": 20,
+    "name": "index128_check",
+    "ms": 4.7947,
+    "nsPerKey": 16.26,
+    "sink": 2632236494
+  },
+  {
+    "variant": "split",
+    "width": 20,
+    "name": "updates",
+    "ms": 22.4651,
+    "nsPerKey": 76.18,
+    "sink": 20522726
+  },
+  {
+    "variant": "split",
+    "width": 32,
+    "name": "hash32_once",
+    "ms": 2.5578,
+    "nsPerKey": 8.67,
+    "sink": 2976121383
+  },
+  {
+    "variant": "split",
+    "width": 32,
+    "name": "hash128_once",
+    "ms": 2.1276,
+    "nsPerKey": 7.21,
+    "sink": 1254573445
+  },
+  {
+    "variant": "split",
+    "width": 32,
+    "name": "index32",
+    "ms": 11.5311,
+    "nsPerKey": 39.1,
+    "sink": 735903963
+  },
+  {
+    "variant": "split",
+    "width": 32,
+    "name": "index128",
+    "ms": 3.2398,
+    "nsPerKey": 10.99,
+    "sink": 736905726
+  },
+  {
+    "variant": "split",
+    "width": 32,
+    "name": "index32_check",
+    "ms": 13.2932,
+    "nsPerKey": 45.08,
+    "sink": 1990477408
+  },
+  {
+    "variant": "split",
+    "width": 32,
+    "name": "index128_check",
+    "ms": 5.5061,
+    "nsPerKey": 18.67,
+    "sink": 1991479171
+  },
+  {
+    "variant": "split",
+    "width": 32,
+    "name": "updates",
+    "ms": 24.2761,
+    "nsPerKey": 82.32,
+    "sink": 28178478
+  },
+  {
+    "variant": "split",
+    "width": 64,
+    "name": "hash32_once",
+    "ms": 5.6578,
+    "nsPerKey": 19.18,
+    "sink": 3956671768
+  },
+  {
+    "variant": "split",
+    "width": 64,
+    "name": "hash128_once",
+    "ms": 3.67,
+    "nsPerKey": 12.44,
+    "sink": 716776849
+  },
+  {
+    "variant": "split",
+    "width": 64,
+    "name": "index32",
+    "ms": 23.3359,
+    "nsPerKey": 79.13,
+    "sink": 737631369
+  },
+  {
+    "variant": "split",
+    "width": 64,
+    "name": "index128",
+    "ms": 4.9652,
+    "nsPerKey": 16.84,
+    "sink": 737009073
+  },
+  {
+    "variant": "split",
+    "width": 64,
+    "name": "index32_check",
+    "ms": 27.4857,
+    "nsPerKey": 93.2,
+    "sink": 1454408218
+  },
+  {
+    "variant": "split",
+    "width": 64,
+    "name": "index128_check",
+    "ms": 8.7256,
+    "nsPerKey": 29.59,
+    "sink": 1453785922
+  },
+  {
+    "variant": "split",
+    "width": 64,
+    "name": "updates",
+    "ms": 32.7872,
+    "nsPerKey": 111.18,
+    "sink": 48499150
+  }
+]

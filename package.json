@@ -13,5 +13,14 @@
     "set-reconciliation",
     "data-synchronization"
   ],
-  "license": "BSD-3-Clause"
+  "license": "BSD-3-Clause",
+  "main": "./dist/index.mjs",
+  "exports": {
+    ".": "./dist/index.mjs"
+  },
+  "scripts": {
+    "build": "make",
+    "test": "node --test test/*.test.mjs",
+    "prepack": "npm run build"
+  }
 }

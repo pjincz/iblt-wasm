@@ -4,3 +4,4 @@ study/c-bench/vendor/
 study/c-bench/__pycache__/
 /dist/
 *.tgz
+/build/

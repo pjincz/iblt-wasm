@@ -1,0 +1,24 @@
+{
+  "base": {
+    "updateCallsInWasm": [
+      "(call $dynamic_iblt::IBLT::indexes\\28unsigned\\20char\\20const*\\29\\20const"
+    ],
+    "jitInstructionBytes": 5980
+  },
+  "split": {
+    "updateCallsInWasm": [
+      "(call $dynamic_iblt::hash128\\28unsigned\\20char\\20const*\\2c\\20unsigned\\20int\\2c\\20unsigned\\20int\\29",
+      "(call $dynamic_iblt::hash128\\28unsigned\\20char\\20const*\\2c\\20unsigned\\20int\\2c\\20unsigned\\20int\\29"
+    ],
+    "jitInstructionBytes": 5100
+  },
+  "split-inline": {
+    "updateCallsInWasm": [],
+    "jitInstructionBytes": 5016
+  },
+  "v8InliningTrace": [
+    "[function 15: inlining direct call #0 to function 16]",
+    "[function 15: inlining direct call #1 to function 16]",
+    "[function 15: emitted 1045 nodes]"
+  ]
+}

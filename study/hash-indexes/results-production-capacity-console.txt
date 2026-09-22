@@ -1,0 +1,1 @@
+PASS: 42000 decodes; all 42 configurations match recorded candidate success counts; zero incorrect successful decodes

@@ -1,0 +1,384 @@
+{
+  "description": "Production hash128 with early inlining: exact success counts match recorded split candidate; every successful decode checked against true differences",
+  "decodes": 42000,
+  "rows": [
+    {
+      "name": "hash128split",
+      "diff": 100,
+      "pattern": "random",
+      "cells": 120,
+      "trials": 1000,
+      "success": 2,
+      "expectedSuccess": 2
+    },
+    {
+      "name": "hash128split",
+      "diff": 100,
+      "pattern": "random",
+      "cells": 132,
+      "trials": 1000,
+      "success": 323,
+      "expectedSuccess": 323
+    },
+    {
+      "name": "hash128split",
+      "diff": 100,
+      "pattern": "random",
+      "cells": 140,
+      "trials": 1000,
+      "success": 816,
+      "expectedSuccess": 816
+    },
+    {
+      "name": "hash128split",
+      "diff": 100,
+      "pattern": "random",
+      "cells": 152,
+      "trials": 1000,
+      "success": 992,
+      "expectedSuccess": 992
+    },
+    {
+      "name": "hash128split",
+      "diff": 100,
+      "pattern": "random",
+      "cells": 200,
+      "trials": 1000,
+      "success": 997,
+      "expectedSuccess": 997
+    },
+    {
+      "name": "hash128split",
+      "diff": 100,
+      "pattern": "random",
+      "cells": 300,
+      "trials": 1000,
+      "success": 1000,
+      "expectedSuccess": 1000
+    },
+    {
+      "name": "hash128split",
+      "diff": 100,
+      "pattern": "random",
+      "cells": 500,
+      "trials": 1000,
+      "success": 1000,
+      "expectedSuccess": 1000
+    },
+    {
+      "name": "hash128split",
+      "diff": 100,
+      "pattern": "timestamps",
+      "cells": 120,
+      "trials": 1000,
+      "success": 2,
+      "expectedSuccess": 2
+    },
+    {
+      "name": "hash128split",
+      "diff": 100,
+      "pattern": "timestamps",
+      "cells": 132,
+      "trials": 1000,
+      "success": 355,
+      "expectedSuccess": 355
+    },
+    {
+      "name": "hash128split",
+      "diff": 100,
+      "pattern": "timestamps",
+      "cells": 140,
+      "trials": 1000,
+      "success": 817,
+      "expectedSuccess": 817
+    },
+    {
+      "name": "hash128split",
+      "diff": 100,
+      "pattern": "timestamps",
+      "cells": 152,
+      "trials": 1000,
+      "success": 990,
+      "expectedSuccess": 990
+    },
+    {
+      "name": "hash128split",
+      "diff": 100,
+      "pattern": "timestamps",
+      "cells": 200,
+      "trials": 1000,
+      "success": 1000,
+      "expectedSuccess": 1000
+    },
+    {
+      "name": "hash128split",
+      "diff": 100,
+      "pattern": "timestamps",
+      "cells": 300,
+      "trials": 1000,
+      "success": 1000,
+      "expectedSuccess": 1000
+    },
+    {
+      "name": "hash128split",
+      "diff": 100,
+      "pattern": "timestamps",
+      "cells": 500,
+      "trials": 1000,
+      "success": 1000,
+      "expectedSuccess": 1000
+    },
+    {
+      "name": "hash128split",
+      "diff": 100,
+      "pattern": "prefix",
+      "cells": 120,
+      "trials": 1000,
+      "success": 4,
+      "expectedSuccess": 4
+    },
+    {
+      "name": "hash128split",
+      "diff": 100,
+      "pattern": "prefix",
+      "cells": 132,
+      "trials": 1000,
+      "success": 326,
+      "expectedSuccess": 326
+    },
+    {
+      "name": "hash128split",
+      "diff": 100,
+      "pattern": "prefix",
+      "cells": 140,
+      "trials": 1000,
+      "success": 821,
+      "expectedSuccess": 821
+    },
+    {
+      "name": "hash128split",
+      "diff": 100,
+      "pattern": "prefix",
+      "cells": 152,
+      "trials": 1000,
+      "success": 995,
+      "expectedSuccess": 995
+    },
+    {
+      "name": "hash128split",
+      "diff": 100,
+      "pattern": "prefix",
+      "cells": 200,
+      "trials": 1000,
+      "success": 1000,
+      "expectedSuccess": 1000
+    },
+    {
+      "name": "hash128split",
+      "diff": 100,
+      "pattern": "prefix",
+      "cells": 300,
+      "trials": 1000,
+      "success": 1000,
+      "expectedSuccess": 1000
+    },
+    {
+      "name": "hash128split",
+      "diff": 100,
+      "pattern": "prefix",
+      "cells": 500,
+      "trials": 1000,
+      "success": 1000,
+      "expectedSuccess": 1000
+    },
+    {
+      "name": "hash128split",
+      "diff": 1000,
+      "pattern": "random",
+      "cells": 1200,
+      "trials": 1000,
+      "success": 0,
+      "expectedSuccess": 0
+    },
+    {
+      "name": "hash128split",
+      "diff": 1000,
+      "pattern": "random",
+      "cells": 1300,
+      "trials": 1000,
+      "success": 404,
+      "expectedSuccess": 404
+    },
+    {
+      "name": "hash128split",
+      "diff": 1000,
+      "pattern": "random",
+      "cells": 1400,
+      "trials": 1000,
+      "success": 1000,
+      "expectedSuccess": 1000
+    },
+    {
+      "name": "hash128split",
+      "diff": 1000,
+      "pattern": "random",
+      "cells": 1500,
+      "trials": 1000,
+      "success": 1000,
+      "expectedSuccess": 1000
+    },
+    {
+      "name": "hash128split",
+      "diff": 1000,
+      "pattern": "random",
+      "cells": 2000,
+      "trials": 1000,
+      "success": 1000,
+      "expectedSuccess": 1000
+    },
+    {
+      "name": "hash128split",
+      "diff": 1000,
+      "pattern": "random",
+      "cells": 3000,
+      "trials": 1000,
+      "success": 1000,
+      "expectedSuccess": 1000
+    },
+    {
+      "name": "hash128split",
+      "diff": 1000,
+      "pattern": "random",
+      "cells": 5000,
+      "trials": 1000,
+      "success": 1000,
+      "expectedSuccess": 1000
+    },
+    {
+      "name": "hash128split",
+      "diff": 1000,
+      "pattern": "timestamps",
+      "cells": 1200,
+      "trials": 1000,
+      "success": 0,
+      "expectedSuccess": 0
+    },
+    {
+      "name": "hash128split",
+      "diff": 1000,
+      "pattern": "timestamps",
+      "cells": 1300,
+      "trials": 1000,
+      "success": 394,
+      "expectedSuccess": 394
+    },
+    {
+      "name": "hash128split",
+      "diff": 1000,
+      "pattern": "timestamps",
+      "cells": 1400,
+      "trials": 1000,
+      "success": 1000,
+      "expectedSuccess": 1000
+    },
+    {
+      "name": "hash128split",
+      "diff": 1000,
+      "pattern": "timestamps",
+      "cells": 1500,
+      "trials": 1000,
+      "success": 1000,
+      "expectedSuccess": 1000
+    },
+    {
+      "name": "hash128split",
+      "diff": 1000,
+      "pattern": "timestamps",
+      "cells": 2000,
+      "trials": 1000,
+      "success": 1000,
+      "expectedSuccess": 1000
+    },
+    {
+      "name": "hash128split",
+      "diff": 1000,
+      "pattern": "timestamps",
+      "cells": 3000,
+      "trials": 1000,
+      "success": 1000,
+      "expectedSuccess": 1000
+    },
+    {
+      "name": "hash128split",
+      "diff": 1000,
+      "pattern": "timestamps",
+      "cells": 5000,
+      "trials": 1000,
+      "success": 1000,
+      "expectedSuccess": 1000
+    },
+    {
+      "name": "hash128split",
+      "diff": 1000,
+      "pattern": "prefix",
+      "cells": 1200,
+      "trials": 1000,
+      "success": 0,
+      "expectedSuccess": 0
+    },
+    {
+      "name": "hash128split",
+      "diff": 1000,
+      "pattern": "prefix",
+      "cells": 1300,
+      "trials": 1000,
+      "success": 382,
+      "expectedSuccess": 382
+    },
+    {
+      "name": "hash128split",
+      "diff": 1000,
+      "pattern": "prefix",
+      "cells": 1400,
+      "trials": 1000,
+      "success": 1000,
+      "expectedSuccess": 1000
+    },
+    {
+      "name": "hash128split",
+      "diff": 1000,
+      "pattern": "prefix",
+      "cells": 1500,
+      "trials": 1000,
+      "success": 1000,
+      "expectedSuccess": 1000
+    },
+    {
+      "name": "hash128split",
+      "diff": 1000,
+      "pattern": "prefix",
+      "cells": 2000,
+      "trials": 1000,
+      "success": 999,
+      "expectedSuccess": 999
+    },
+    {
+      "name": "hash128split",
+      "diff": 1000,
+      "pattern": "prefix",
+      "cells": 3000,
+      "trials": 1000,
+      "success": 1000,
+      "expectedSuccess": 1000
+    },
+    {
+      "name": "hash128split",
+      "diff": 1000,
+      "pattern": "prefix",
+      "cells": 5000,
+      "trials": 1000,
+      "success": 1000,
+      "expectedSuccess": 1000
+    }
+  ]
+}
