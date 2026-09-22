@@ -51,6 +51,7 @@ export function clone(table) {
 }
 function change(table, keys, remove) {
   const { ptr: tablePtr, keyBytes } = config(table);
+  if (keys instanceof Uint8Array) keys = [keys];
   if (!Array.isArray(keys) || keys.length * keyBytes > 0x7fffffff) throw new Error('Invalid key input');
   for (const key of keys) {
     if (!(key instanceof Uint8Array) || key.byteLength > keyBytes) throw new Error('Invalid key input');

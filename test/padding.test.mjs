@@ -47,7 +47,7 @@ test('add/remove validate the entire array before changing the table', () => {
     const before = iblt.serialize(table);
     for (const mutate of [iblt.add, iblt.remove]) {
       mutate(table, []);
-      for (const keys of [new Array(1), [[1, 2]], null, Uint8Array.of(1), [Uint8Array.of(1), new Uint8Array(17)]]) {
+      for (const keys of [new Array(1), [[1, 2]], null, new Uint8Array(17), [Uint8Array.of(1), new Uint8Array(17)]]) {
         assert.throws(() => mutate(table, keys), /Invalid key input/);
         assert.deepEqual(iblt.serialize(table), before);
       }
@@ -55,6 +55,23 @@ test('add/remove validate the entire array before changing the table', () => {
     assert.equal('input' in iblt, false);
     assert.equal('update' in iblt, false);
   } finally { iblt.destroy(table); }
+});
+
+test('single keys and batches are interchangeable, including empty and offset keys', () => {
+  const single = iblt.create(16, 12, 512), batch = iblt.create(16, 12, 512);
+  const keys = [new Uint8Array(), Uint8Array.of(9, 1, 2, 9).subarray(1, 3), new Uint8Array(16).fill(3), Buffer.from([4, 5])];
+  try {
+    for (const key of keys) single.add(key);
+    batch.add(keys);
+    assert.deepEqual(single.serialize(), batch.serialize());
+    single.remove(keys);
+    for (const key of keys) iblt.remove(batch, key);
+    assert(single.serialize().every(byte => byte === 0));
+    assert(batch.serialize().every(byte => byte === 0));
+    iblt.add(single, keys[1]);
+    batch.add([keys[1]]);
+    assert.deepEqual(single.serialize(), batch.serialize());
+  } finally { single.destroy(); batch.destroy(); }
 });
 
 test('temporary input memory is released when native update rejects overflow', () => {

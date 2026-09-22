@@ -26,38 +26,33 @@ The client has `alice` and `bob`; the server has `bob` and `oscar`.
 ```js
 import * as iblt from 'iblt-wasm';
 
-const text_encoder = new TextEncoder();
+const key_encoder = new TextEncoder();
+const key_decoder = key => (new TextDecoder()).decode(key).replace(/\0+$/, '');
 
-// --- Server side: create a payload ---
+////////////////////////////////////////////////////////////////////////////////
+// --- Server side: prepare payload, and pass to client ---
 const server_table = iblt.create(16, 12, 512); // key length, checksum length (bytes), buckets
-server_table.add(['bob', 'oscar'].map(name => text_encoder.encode(name)));
-
+server_table.add(['bob', 'oscar'].map(name => key_encoder.encode(name)));
 const payload = server_table.serialize();  // Pass this to the client via HTTP, WebSocket, etc.
 
-
+////////////////////////////////////////////////////////////////////////////////
 // --- Client side: receive the payload and find differences ---
 const client_table = iblt.create(16, 12, 512); // arguments must exactly match the server side
-client_table.add(['alice', 'bob'].map(name => text_encoder.encode(name)));
+client_table.add(['alice', 'bob'].map(name => key_encoder.encode(name)));
 
 const received_table = iblt.deserialize(16, 12, 512, payload);
 const result = received_table.decode(client_table);
 
-// Returned keys are padded to 16 bytes. Strip padding for these text keys.
-const decoder = new TextDecoder();
-const name = key => decoder.decode(key).replace(/\0+$/, '');
 if (result.success) {
-  console.log(result.onlyRemote.map(name)); // ['oscar']: only on the server
-  console.log(result.onlyLocal.map(name));  // ['alice']: only on the client
+  console.log('server side only:', result.onlyRemote.map(key_decoder)); // ['oscar']
+  console.log('client side only:', result.onlyLocal.map(key_decoder));  // ['alice']
 } else {
   // Discard partial results and rebuild both tables with more buckets.
   console.log('Could not decode the differences; retry with more buckets.');
 }
-
 ```
 
 `bob` is shared and cancels out. `decode(remote, local)` leaves both tables unchanged. The text conversion above assumes names do not contain trailing NUL characters; binary keys should stay as bytes.
-
-Use `add(table, keys)` to insert keys, `remove(table, keys)` to remove keys and `clone(table)` to copy a table. Keep tables alive across edits to avoid rebuilding them. Keys must follow set semantics: do not insert a key twice accidentally. A bulk update that overflows a counter may have already applied earlier keys in that batch. Table handles belong to the module instance that created them. Both `add` and `remove` accept an array of `Uint8Array` keys and infer the key length from the table; temporary WASM input memory is freed automatically.
 
 ## API
 
@@ -75,11 +70,13 @@ Use `add(table, keys)` to insert keys, `remove(table, keys)` to remove keys and 
 
 - `table.add(keys)` → `undefined`
 
-  Insert an array of `Uint8Array` keys. Short keys are zero-padded; oversized keys throw.
+  Insert a single `Uint8Array` key or an array of keys. Short keys are zero-padded; oversized keys throw.
+
+  **Do not add a key that is already present.** Unlike `Set.add()`, every call contributes to the bucket counts and XOR sums; keys are not deduplicated. Adding the same key twice can make the difference table impossible to decode: a remaining multiplicity of two cannot be peeled as a single key. Equal duplicate counts on both sides can still cancel, so failure is not guaranteed. The library stores an aggregate table, not the full key set, and does not detect or reject duplicate insertions. Your application must enforce uniqueness, including across keys that become identical after zero-padding.
 
 - `table.remove(keys)` → `undefined`
 
-  Remove previously inserted keys using the same padding rules.
+  Remove a single `Uint8Array` key or an array of previously inserted keys, using the same padding rules.
 
 - `table.serialize()` → `Uint8Array`
 
@@ -105,13 +102,13 @@ Function-style equivalents are also available: `iblt.add(table, keys)`, `iblt.re
 
 Build a table from your full dataset once, then keep it up to date as records change:
 
-- When a record is created, call `table.add([key])`.
-- When a record is deleted, call `table.remove([oldKey])`.
-- When a record's key changes, call `table.remove([oldKey])`, then `table.add([newKey])`.
+- When a record is created, call `table.add(key)`.
+- When a record is deleted, call `table.remove(oldKey)`.
+- When a record's key changes, call `table.remove(oldKey)`, then `table.add(newKey)`.
 
 `remove()` reverses a previous insertion; it lets the table continue to represent the current dataset without rebuilding it. If edits should appear as differences, encode the record's version or a content hash in its key. Changing content while keeping the same key is invisible to the table.
 
-At the next sync, just call `table.serialize()` and compare against the other side's maintained table. Each add or remove touches four buckets, regardless of the total record count, so you do not need to scan the full list on every sync. Decoding leaves both tables unchanged, ready for future updates.
+At the next sync, just call `table.serialize()` and compare against the other side's maintained table. Adding or removing each key touches four buckets, regardless of the total record count, so you do not need to scan the full list on every sync. Decoding leaves both tables unchanged, ready for future updates.
 
 Apply every change exactly once and retain the old key until it has been removed. If the table is lost, updates are missed, or its configuration changes, rebuild it from the current dataset. This tracks the current set, not an edit history.
 
