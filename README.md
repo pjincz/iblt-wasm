@@ -96,7 +96,7 @@ if (result.success) {
 
 - `table.destroy()` → `undefined`
 
-  Optionally release WASM resources immediately instead of waiting for GC. Repeated calls are safe; other operations after destruction throw.
+  Optionally release WASM resources immediately. Normally, you should not call this. In normal use, it won't make your program faster or more robust; let garbage collection handle cleanup. Consider calling it only when creating many temporary tables in a loop and needing to limit memory usage. Repeated calls are safe; other operations after destruction throw.
 
 `decode()` returns `{ success, onlyRemote, onlyLocal }`. When `success` is `true`, `onlyRemote` contains keys present only in the receiver of the method call (`remoteTable`), and `onlyLocal` contains keys present only in its argument (`localTable`). Both are arrays of padded `Uint8Array` keys; ordering is unspecified. When `success` is `false`, discard both arrays because they may contain partial results.
 
