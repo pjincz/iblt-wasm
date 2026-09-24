@@ -9,7 +9,7 @@ EMXX ?= em++
 endif
 
 CXXFLAGS ?= -O3 -DNDEBUG -std=c++17
-EXPORTS := _malloc,_free,_iblt_create,_iblt_destroy,_iblt_clone,_iblt_fold,_iblt_update,_iblt_wire_size,_iblt_serialize,_iblt_deserialize,_iblt_decode,_iblt_result_count,_iblt_result_keys,_iblt_result_sides
+EXPORTS := _malloc,_free,_iblt_create,_iblt_destroy,_iblt_clone,_iblt_fold,_iblt_update,_iblt_wire_size,_iblt_serialize,_iblt_serialize_folded,_iblt_deserialize,_iblt_decode,_iblt_result_count,_iblt_result_keys,_iblt_result_sides
 EMFLAGS := -sMODULARIZE=1 -sEXPORT_ES6=1 -sENVIRONMENT=node,web,worker \
            -sALLOW_MEMORY_GROWTH=1 -sWASM_BIGINT=1 -sASSERTIONS=1 \
            -sEXPORTED_RUNTIME_METHODS=HEAPU8 -sEXPORTED_FUNCTIONS=$(EXPORTS)

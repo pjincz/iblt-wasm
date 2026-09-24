@@ -16,7 +16,7 @@ function config(table) {
 class Table {
   add(keys) { add(this, keys); }
   remove(keys) { remove(this, keys); }
-  serialize() { return serialize(this); }
+  serialize(cells) { return serialize(this, cells); }
   decode(local) { return decode(this, local); }
   clone() { return clone(this); }
   fold(cells) { return fold(this, cells); }
@@ -51,9 +51,12 @@ export function clone(table) {
   return wrap(wasm._iblt_clone(ptr), keyBytes, checkBytes, cells);
 }
 // Return an independent table; cells must divide the source cell count.
+function checkFoldCells(state, cells) {
+  if (!aligned(cells) || state.cells % cells !== 0) throw new Error('Fold cells must be a multiple of 4 and divide the source cell count');
+}
 export function fold(table, cells) {
   const state = config(table);
-  if (!aligned(cells) || state.cells % cells !== 0) throw new Error('Fold cells must be a multiple of 4 and divide the source cell count');
+  checkFoldCells(state, cells);
   const ptr = wasm._iblt_fold(state.ptr, cells);
   if (!ptr) throw new Error('Fold failed');
   return wrap(ptr, state.keyBytes, state.checkBytes, cells);
@@ -84,9 +87,18 @@ function change(table, keys, remove) {
 }
 export function add(table, keys) { change(table, keys, false); }
 export function remove(table, keys) { change(table, keys, true); }
-export function serialize(t) {
-  const tablePtr=config(t).ptr;const length=wasm._iblt_wire_size(tablePtr),ptr=wasm._malloc(length);
-  try {wasm._iblt_serialize(tablePtr,ptr);return wasm.HEAPU8.slice(ptr,ptr+length);}finally{wasm._free(ptr);}
+export function serialize(t, cells) {
+  const state = config(t);
+  if (cells === undefined) cells = state.cells;
+  checkFoldCells(state, cells);
+  const length = cells * (4 + state.keyBytes + state.checkBytes);
+  const ptr = wasm._malloc(length);
+  if (!ptr) throw new Error('Output allocation failed');
+  try {
+    if (cells === state.cells) wasm._iblt_serialize(state.ptr, ptr);
+    else if (!wasm._iblt_serialize_folded(state.ptr, ptr, cells)) throw new Error('Fold serialization failed');
+    return wasm.HEAPU8.slice(ptr, ptr + length);
+  } finally { wasm._free(ptr); }
 }
 export function deserialize(keyBytes,checkBytes,cells,bytes) {
   if(!(bytes instanceof Uint8Array)||bytes.length!==cells*(4+keyBytes+checkBytes)) throw new Error('Wrong payload size');

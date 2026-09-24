@@ -29,6 +29,8 @@ test('fold is byte-identical to direct construction for different widths and fac
         populate(direct);
         const folded = track(large.fold(cells));
         assert.deepEqual(folded.serialize(), direct.serialize());
+        assert.deepEqual(large.serialize(cells), direct.serialize());
+        assert.deepEqual(iblt.serialize(large, cells), folded.serialize());
         assert.deepEqual(large.serialize(), original);
         folded.add(key(10000));
         assert.deepEqual(large.serialize(), original);
@@ -47,7 +49,8 @@ test('folded payload decodes against a directly constructed small table', () => 
     server.add(Array.from({length:1000}, (_,i) => key(i)));
     client.add(Array.from({length:1000}, (_,i) => key(i+20)));
     const small = track(server.fold(1000));
-    const wire = small.serialize();
+    const wire = server.serialize(1000);
+    assert.deepEqual(wire, small.serialize());
     assert.equal(wire.length, 32000);
     const received = track(iblt.deserialize(16,12,1000,wire));
     const result = received.decode(client);
@@ -66,12 +69,17 @@ test('fold validates target sizes and table lifecycle', () => {
   try {
     for (const cells of [undefined,0,-4,2,6,12,1024,4.5,NaN,Infinity,'128',2**32+128]) {
       assert.throws(() => table.fold(cells), /Fold cells/);
+      if (cells !== undefined) assert.throws(() => table.serialize(cells), /Fold cells/);
     }
+    assert.throws(() => table.serialize(null), /Fold cells/);
+    assert.deepEqual(table.serialize(undefined),table.serialize());
+    assert.deepEqual(table.serialize(4),new Uint8Array(128));
     const empty = table.fold(4);
     try { assert.deepEqual(empty.serialize(),new Uint8Array(128)); } finally { empty.destroy(); }
     assert.throws(() => iblt.fold({},4), /Unknown\/destroyed/);
   } finally { table.destroy(); }
   assert.throws(() => table.fold(4), /Unknown\/destroyed/);
+  assert.throws(() => table.serialize(4), /Unknown\/destroyed/);
 });
 
 test('fold wraps counts without changing the source', () => {
@@ -83,7 +91,10 @@ test('fold wraps counts without changing the source', () => {
     const source = iblt.deserialize(16,12,12,payload);
     try {
       const folded = source.fold(4);
-      try { assert.equal(new DataView(folded.serialize().buffer).getInt32(0,true),counts.reduce((a,b) => a+b,0) | 0); }
+      try {
+        assert.equal(new DataView(folded.serialize().buffer).getInt32(0,true),counts.reduce((a,b) => a+b,0) | 0);
+        assert.deepEqual(source.serialize(4),folded.serialize());
+      }
       finally { folded.destroy(); }
       assert.deepEqual(source.serialize(),payload);
     } finally { source.destroy(); }

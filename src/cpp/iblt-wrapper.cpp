@@ -21,6 +21,7 @@ Handle *iblt_fold(Handle *h,unsigned cells) {
     return out;
 }
 void iblt_serialize(Handle *h,uint8_t *out) { h->table.serialize(out); }
+int iblt_serialize_folded(Handle *h,uint8_t *out,unsigned cells) { return h->table.serialize(out,cells); }
 void iblt_deserialize(Handle *h,const uint8_t *in) { h->table.deserialize(in); }
 int iblt_update(Handle *h,const uint8_t *keys,unsigned count,int remove) {
     for(unsigned i=0;i<count;++i) if(!h->table.update(keys+size_t(i)*h->table.keyBytes(),remove?-1:1)) return 0;

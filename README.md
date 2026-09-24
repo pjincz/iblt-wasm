@@ -78,9 +78,9 @@ if (result.success) {
 
   Remove a single `Uint8Array` key or an array of previously inserted keys, using the same padding rules.
 
-- `table.serialize()` → `Uint8Array`
+- `table.serialize(cells?)` → `Uint8Array`
 
-  Return an independent copy of the table's binary payload.
+  Return an independent copy of the table's binary payload. With `cells`, fold directly into the output without creating an intermediate table; the source remains unchanged. The target follows the same size rules as `fold(cells)`. For example, `table.serialize(1000)` produces the same bytes as `table.fold(1000).serialize()`. Restore the payload using the target cell count. Omitting `cells` preserves the original size.
 
 - `remoteTable.decode(localTable)` → Decode result
 
@@ -100,7 +100,7 @@ if (result.success) {
 
 `decode()` returns `{ success, onlyRemote, onlyLocal }`. When `success` is `true`, `onlyRemote` contains keys present only in the receiver of the method call (`remoteTable`), and `onlyLocal` contains keys present only in its argument (`localTable`). Both are arrays of padded `Uint8Array` keys; ordering is unspecified. When `success` is `false`, discard both arrays because they may contain partial results.
 
-Function-style equivalents are also available: `iblt.add(table, keys)`, `iblt.remove(table, keys)`, `iblt.serialize(table)`, `iblt.decode(remoteTable, localTable)`, `iblt.clone(table)`, `iblt.fold(table, cells)` and `iblt.destroy(table)`.
+Function-style equivalents are also available: `iblt.add(table, keys)`, `iblt.remove(table, keys)`, `iblt.serialize(table, cells?)`, `iblt.decode(remoteTable, localTable)`, `iblt.clone(table)`, `iblt.fold(table, cells)` and `iblt.destroy(table)`.
 
 ## Maintaining a table across syncs
 

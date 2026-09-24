@@ -150,6 +150,27 @@ public:
         return true;
     }
     void serialize(uint8_t *out) const { for (auto word: data_) { store32(out,word); out+=4; } }
+    // Aggregate directly into little-endian output without an intermediate table.
+    bool serialize(uint8_t *out, unsigned cells) const {
+        if (cells < 4 || cells % 4 || count_ % cells) return false;
+        if (cells == count_) { serialize(out); return true; }
+        const unsigned sourceSize = count_ / 4, targetSize = cells / 4;
+        for (unsigned lane = 0; lane < 4; ++lane) {
+            for (unsigned j = 0; j < targetSize; ++j) {
+                uint32_t count = 0;
+                for (unsigned k = j; k < sourceSize; k += targetSize)
+                    count += data_[size_t(lane * sourceSize + k) * stride_];
+                store32(out, count); out += 4;
+                for (unsigned word = 1; word < stride_; ++word) {
+                    uint32_t sum = 0;
+                    for (unsigned k = j; k < sourceSize; k += targetSize)
+                        sum ^= data_[size_t(lane * sourceSize + k) * stride_ + word];
+                    store32(out, sum); out += 4;
+                }
+            }
+        }
+        return true;
+    }
     void deserialize(const uint8_t *in) { for (auto &word: data_) { word=load32(in); in+=4; } }
 };
 } // namespace iblt
