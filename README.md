@@ -6,16 +6,15 @@ This project began with [IBLT_Cplusplus](https://github.com/gavinandresen/IBLT_C
 
 ## Build and test
 
-Building requires GNU Make 4.3+, a POSIX shell, Node.js and Emscripten. Activate the Emscripten environment so `em++` is on `PATH`, or set `EMSDK` to its installation directory:
+Building requires GNU Make 4.3+, a POSIX shell, Node.js, Git and Python 3. The first build downloads and activates Emscripten 4.0.23 in the project's `emsdk/` directory; later builds reuse it.
 
 ```sh
-export EMSDK=/path/to/emsdk
 npm run build
 npm test
 npm pack
 ```
 
-`npm run build` calls `make`; unchanged outputs are reused. You can also run `make -j` or `make test` directly. To override the compiler, use `make EMXX=/path/to/em++`. After changing compiler options or SDK versions, use `make -B` to force a rebuild.
+`npm run build` calls `make`; unchanged outputs are reused. You can also run `make -j` or `make test` directly, or `make sdk` to prepare only the toolchain. `make clean` removes `dist/` and preserves the SDK. After changing compiler options, use `make -B` to force a rebuild.
 
 `npm pack` builds the package through `prepack`. The package includes the generated JavaScript and WASM in `dist/`; consumers do not need a compiler. There is no project-specific Python build script; Python remains an internal dependency of Emscripten itself.
 

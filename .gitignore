@@ -5,3 +5,4 @@ study/c-bench/__pycache__/
 /dist/
 *.tgz
 /build/
+/emsdk/
