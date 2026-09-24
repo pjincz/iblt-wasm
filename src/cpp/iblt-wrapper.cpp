@@ -14,6 +14,12 @@ Handle *iblt_create(unsigned cells,unsigned keyBytes,unsigned checkBytes) {
 void iblt_destroy(Handle *h) { delete h; }
 Handle *iblt_clone(Handle *h) { auto *copy=new Handle(h->table.cellCount(),h->table.keyBytes(),h->table.checkBytes());copy->table=h->table;return copy; }
 unsigned iblt_wire_size(Handle *h) { return h->table.wireBytes(); }
+Handle *iblt_fold(Handle *h,unsigned cells) {
+    if (!IBLT::valid(cells,h->table.keyBytes(),h->table.checkBytes()) || h->table.cellCount()%cells) return nullptr;
+    auto *out=new Handle(cells,h->table.keyBytes(),h->table.checkBytes());
+    if (!h->table.fold(out->table)) { delete out; return nullptr; }
+    return out;
+}
 void iblt_serialize(Handle *h,uint8_t *out) { h->table.serialize(out); }
 void iblt_deserialize(Handle *h,const uint8_t *in) { h->table.deserialize(in); }
 int iblt_update(Handle *h,const uint8_t *keys,unsigned count,int remove) {

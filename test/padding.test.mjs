@@ -74,7 +74,7 @@ test('single keys and batches are interchangeable, including empty and offset ke
   } finally { single.destroy(); batch.destroy(); }
 });
 
-test('temporary input memory is released when native update rejects overflow', () => {
+test('updates wrap counts, release temporary memory and remain reversible', () => {
   const cells = 4, stride = 32, wire = new Uint8Array(cells * stride);
   const view = new DataView(wire.buffer);
   for (const [mutate, count] of [[iblt.add, 2147483647], [iblt.remove, -2147483648]]) {
@@ -85,13 +85,20 @@ test('temporary input memory is released when native update rejects overflow', (
     try {
       iblt.wasm._malloc = size => (allocated = malloc(size));
       iblt.wasm._free = ptr => { freed = ptr; free(ptr); };
-      assert.throws(() => mutate(table, [Uint8Array.of(1)]), /Counter overflow/);
+      mutate(table, [Uint8Array.of(1)]);
       assert(allocated);
       assert.equal(freed, allocated);
     } finally {
       iblt.wasm._malloc = malloc; iblt.wasm._free = free;
     }
-    try { assert.deepEqual(iblt.serialize(table), wire); }
+    try {
+      const updated = new DataView(iblt.serialize(table).buffer);
+      const expected = mutate === iblt.add ? -2147483648 : 2147483647;
+      for (let i = 0; i < cells; i++) assert.equal(updated.getInt32(i * stride, true), expected);
+      const reverse = mutate === iblt.add ? iblt.remove : iblt.add;
+      reverse(table, [Uint8Array.of(1)]);
+      assert.deepEqual(iblt.serialize(table), wire);
+    }
     finally { iblt.destroy(table); }
   }
 });

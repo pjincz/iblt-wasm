@@ -19,6 +19,7 @@ class Table {
   serialize() { return serialize(this); }
   decode(local) { return decode(this, local); }
   clone() { return clone(this); }
+  fold(cells) { return fold(this, cells); }
   destroy() { destroy(this); }
 }
 function wrap(ptr, keyBytes, checkBytes, cells) {
@@ -49,6 +50,14 @@ export function clone(table) {
   const { ptr, keyBytes, checkBytes, cells } = config(table);
   return wrap(wasm._iblt_clone(ptr), keyBytes, checkBytes, cells);
 }
+// Return an independent table; cells must divide the source cell count.
+export function fold(table, cells) {
+  const state = config(table);
+  if (!aligned(cells) || state.cells % cells !== 0) throw new Error('Fold cells must be a multiple of 4 and divide the source cell count');
+  const ptr = wasm._iblt_fold(state.ptr, cells);
+  if (!ptr) throw new Error('Fold failed');
+  return wrap(ptr, state.keyBytes, state.checkBytes, cells);
+}
 function change(table, keys, remove) {
   const { ptr: tablePtr, keyBytes } = config(table);
   if (keys instanceof Uint8Array) keys = [keys];
@@ -67,7 +76,7 @@ function change(table, keys, remove) {
       if (key.byteLength < keyBytes) wasm.HEAPU8.fill(0, start + key.byteLength, start + keyBytes);
     });
     if (!wasm._iblt_update(tablePtr, ptr, keys.length, Number(remove))) {
-      throw new Error('Counter overflow; preceding keys may have been applied');
+      throw new Error('Invalid update');
     }
   } finally {
     wasm._free(ptr);

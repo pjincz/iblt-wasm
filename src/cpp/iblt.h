@@ -54,7 +54,6 @@ class IBLT {
     unsigned keyBytes_, checkBytes_, count_, stride_;
     std::vector<uint32_t> data_;
     static int64_t signedCount(uint32_t x) { return x <= INT32_MAX ? int64_t(x) : int64_t(x) - (INT64_C(1) << 32); }
-    static bool fits(int64_t x) { return x >= INT32_MIN && x <= INT32_MAX; }
 public:
     static bool valid(unsigned cells, unsigned keyBytes, unsigned checkBytes) {
         const uint64_t stride = uint64_t(keyBytes) + checkBytes + 4;
@@ -87,7 +86,6 @@ public:
     bool update(const uint8_t *key, int delta) {
         if (delta != 1 && delta != -1) return false;
         auto positions = indexes(key); auto sum = checksum(key);
-        for (auto p: positions) if (!fits(signedCount(data_[size_t(p)*stride_]) + delta)) return false;
         for (auto p: positions) {
             auto *cell = data_.data() + size_t(p)*stride_;
             cell[0] = uint32_t(signedCount(cell[0]) + delta);
@@ -98,11 +96,30 @@ public:
     }
     bool subtract(const IBLT &b) {
         if (!compatible(b)) return false;
-        for (size_t i=0;i<data_.size();i+=stride_)
-            if (!fits(signedCount(data_[i])-signedCount(b.data_[i]))) return false;
         for (size_t i=0;i<data_.size();i+=stride_) {
             data_[i] = uint32_t(signedCount(data_[i])-signedCount(b.data_[i]));
             for (unsigned j=1;j<stride_;++j) data_[i+j] ^= b.data_[i+j];
+        }
+        return true;
+    }
+    // Fold each subtable independently into a smaller, distinct destination.
+    // Counts wrap modulo 2^32 on conversion; the source is unchanged.
+    bool fold(IBLT &out) const {
+        if (&out == this || keyBytes_ != out.keyBytes_ || checkBytes_ != out.checkBytes_ ||
+            count_ % out.count_ != 0) return false;
+        const unsigned sourceSize = count_ / 4, targetSize = out.count_ / 4;
+        for (unsigned lane = 0; lane < 4; ++lane) {
+            for (unsigned j = 0; j < targetSize; ++j) {
+                auto *target = out.data_.data() + size_t(lane * targetSize + j) * stride_;
+                std::fill(target, target + stride_, 0);
+                int64_t count = 0;
+                for (unsigned k = j; k < sourceSize; k += targetSize) {
+                    const auto *source = data_.data() + size_t(lane * sourceSize + k) * stride_;
+                    count += signedCount(source[0]);
+                    for (unsigned word = 1; word < stride_; ++word) target[word] ^= source[word];
+                }
+                target[0] = uint32_t(count);
+            }
         }
         return true;
     }

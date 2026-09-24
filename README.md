@@ -90,13 +90,17 @@ if (result.success) {
 
   Create an independent copy with the same configuration and contents.
 
+- `table.fold(cells)` → Table
+
+  Create an independent table with fewer cells without scanning the original keys. The target must be a multiple of 4, at least 4, and an exact divisor of the source cell count; invalid sizes throw. Key and checksum lengths stay unchanged, and the source table is preserved. Using the same cell count creates a copy. For example, a 5,000-cell table can use `table.fold(1000)` to produce a 1,000-cell table with the same contents as directly building at that size, but less decoding capacity.
+
 - `table.destroy()` → `undefined`
 
   Optionally release WASM resources immediately instead of waiting for GC. Repeated calls are safe; other operations after destruction throw.
 
 `decode()` returns `{ success, onlyRemote, onlyLocal }`. When `success` is `true`, `onlyRemote` contains keys present only in the receiver of the method call (`remoteTable`), and `onlyLocal` contains keys present only in its argument (`localTable`). Both are arrays of padded `Uint8Array` keys; ordering is unspecified. When `success` is `false`, discard both arrays because they may contain partial results.
 
-Function-style equivalents are also available: `iblt.add(table, keys)`, `iblt.remove(table, keys)`, `iblt.serialize(table)`, `iblt.decode(remoteTable, localTable)`, `iblt.clone(table)` and `iblt.destroy(table)`.
+Function-style equivalents are also available: `iblt.add(table, keys)`, `iblt.remove(table, keys)`, `iblt.serialize(table)`, `iblt.decode(remoteTable, localTable)`, `iblt.clone(table)`, `iblt.fold(table, cells)` and `iblt.destroy(table)`.
 
 ## Maintaining a table across syncs
 
@@ -134,7 +138,7 @@ Size the table for the **expected number of differences**, not the total number 
 
 A practical starting point for this implementation is **2–3 cells per expected difference**, rounded up to a multiple of 4, with a minimum of 4 cells. This is a starting point to test with your data, not a guarantee. Use extra headroom when the difference count is uncertain. `cells` must be provided explicitly. The example uses `512`, which is much more than this tiny example needs.
 
-If decoding fails, discard partial results and retry with more cells. Changing cell count changes key placement, so both endpoints must rebuild from their keys; an existing table cannot simply be extended with empty cells. With the current mapping, our mixed-input capacity experiment recovered 1,000 differences with 3,000 cells in 3,000/3,000 trials, but finite samples do not establish a guaranteed capacity.
+If decoding fails, discard partial results and retry with more cells. You can maintain a larger table and use `fold(cells)` to try smaller payloads first, then retry with a larger divisor of the original cell count or the original table. Both endpoints must use the same configuration for each attempt. Folding cannot expand a table; if no suitable larger table is retained, rebuild from the keys. With the current mapping, our mixed-input capacity experiment recovered 1,000 differences with 3,000 cells in 3,000/3,000 trials, but finite samples do not establish a guaranteed capacity.
 
 ### Transfer size
 
