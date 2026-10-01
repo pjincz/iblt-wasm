@@ -1,0 +1,339 @@
+{
+  "date": "2026-09-24T07:53:39.639Z",
+  "node": "v24.21.0",
+  "cells": 100,
+  "keyBytes": 16,
+  "checksumBytes": 12,
+  "countBits": 32,
+  "payloadBytes": 3200,
+  "trialsPerPattern": 10000,
+  "seed": 430408253,
+  "elapsedSeconds": 25.015343385,
+  "notes": "Distinct keys; differences split approximately evenly between remote and local. Common keys omitted because they cancel. All successful outputs checked exactly, including sign and multiplicity. Trials are deterministic pseudorandom samples, not a capacity guarantee.",
+  "results": [
+    {
+      "difference": 0,
+      "pattern": "random128",
+      "trials": 10000,
+      "success": 10000,
+      "failed": 0,
+      "successPercent": 100,
+      "incorrectSuccess": 0
+    },
+    {
+      "difference": 0,
+      "pattern": "timestamp-pair",
+      "trials": 10000,
+      "success": 10000,
+      "failed": 0,
+      "successPercent": 100,
+      "incorrectSuccess": 0
+    },
+    {
+      "difference": 1,
+      "pattern": "random128",
+      "trials": 10000,
+      "success": 10000,
+      "failed": 0,
+      "successPercent": 100,
+      "incorrectSuccess": 0
+    },
+    {
+      "difference": 1,
+      "pattern": "timestamp-pair",
+      "trials": 10000,
+      "success": 10000,
+      "failed": 0,
+      "successPercent": 100,
+      "incorrectSuccess": 0
+    },
+    {
+      "difference": 2,
+      "pattern": "random128",
+      "trials": 10000,
+      "success": 10000,
+      "failed": 0,
+      "successPercent": 100,
+      "incorrectSuccess": 0
+    },
+    {
+      "difference": 2,
+      "pattern": "timestamp-pair",
+      "trials": 10000,
+      "success": 10000,
+      "failed": 0,
+      "successPercent": 100,
+      "incorrectSuccess": 0
+    },
+    {
+      "difference": 5,
+      "pattern": "random128",
+      "trials": 10000,
+      "success": 10000,
+      "failed": 0,
+      "successPercent": 100,
+      "incorrectSuccess": 0
+    },
+    {
+      "difference": 5,
+      "pattern": "timestamp-pair",
+      "trials": 10000,
+      "success": 10000,
+      "failed": 0,
+      "successPercent": 100,
+      "incorrectSuccess": 0
+    },
+    {
+      "difference": 10,
+      "pattern": "random128",
+      "trials": 10000,
+      "success": 9999,
+      "failed": 1,
+      "successPercent": 99.99,
+      "incorrectSuccess": 0
+    },
+    {
+      "difference": 10,
+      "pattern": "timestamp-pair",
+      "trials": 10000,
+      "success": 9999,
+      "failed": 1,
+      "successPercent": 99.99,
+      "incorrectSuccess": 0
+    },
+    {
+      "difference": 20,
+      "pattern": "random128",
+      "trials": 10000,
+      "success": 9996,
+      "failed": 4,
+      "successPercent": 99.96000000000001,
+      "incorrectSuccess": 0
+    },
+    {
+      "difference": 20,
+      "pattern": "timestamp-pair",
+      "trials": 10000,
+      "success": 9997,
+      "failed": 3,
+      "successPercent": 99.97,
+      "incorrectSuccess": 0
+    },
+    {
+      "difference": 30,
+      "pattern": "random128",
+      "trials": 10000,
+      "success": 9986,
+      "failed": 14,
+      "successPercent": 99.86,
+      "incorrectSuccess": 0
+    },
+    {
+      "difference": 30,
+      "pattern": "timestamp-pair",
+      "trials": 10000,
+      "success": 9990,
+      "failed": 10,
+      "successPercent": 99.9,
+      "incorrectSuccess": 0
+    },
+    {
+      "difference": 40,
+      "pattern": "random128",
+      "trials": 10000,
+      "success": 9979,
+      "failed": 21,
+      "successPercent": 99.79,
+      "incorrectSuccess": 0
+    },
+    {
+      "difference": 40,
+      "pattern": "timestamp-pair",
+      "trials": 10000,
+      "success": 9980,
+      "failed": 20,
+      "successPercent": 99.8,
+      "incorrectSuccess": 0
+    },
+    {
+      "difference": 45,
+      "pattern": "random128",
+      "trials": 10000,
+      "success": 9974,
+      "failed": 26,
+      "successPercent": 99.74,
+      "incorrectSuccess": 0
+    },
+    {
+      "difference": 45,
+      "pattern": "timestamp-pair",
+      "trials": 10000,
+      "success": 9980,
+      "failed": 20,
+      "successPercent": 99.8,
+      "incorrectSuccess": 0
+    },
+    {
+      "difference": 50,
+      "pattern": "random128",
+      "trials": 10000,
+      "success": 9964,
+      "failed": 36,
+      "successPercent": 99.64,
+      "incorrectSuccess": 0
+    },
+    {
+      "difference": 50,
+      "pattern": "timestamp-pair",
+      "trials": 10000,
+      "success": 9975,
+      "failed": 25,
+      "successPercent": 99.75,
+      "incorrectSuccess": 0
+    },
+    {
+      "difference": 55,
+      "pattern": "random128",
+      "trials": 10000,
+      "success": 9958,
+      "failed": 42,
+      "successPercent": 99.58,
+      "incorrectSuccess": 0
+    },
+    {
+      "difference": 55,
+      "pattern": "timestamp-pair",
+      "trials": 10000,
+      "success": 9953,
+      "failed": 47,
+      "successPercent": 99.53,
+      "incorrectSuccess": 0
+    },
+    {
+      "difference": 60,
+      "pattern": "random128",
+      "trials": 10000,
+      "success": 9950,
+      "failed": 50,
+      "successPercent": 99.5,
+      "incorrectSuccess": 0
+    },
+    {
+      "difference": 60,
+      "pattern": "timestamp-pair",
+      "trials": 10000,
+      "success": 9942,
+      "failed": 58,
+      "successPercent": 99.42,
+      "incorrectSuccess": 0
+    },
+    {
+      "difference": 65,
+      "pattern": "random128",
+      "trials": 10000,
+      "success": 9719,
+      "failed": 281,
+      "successPercent": 97.19,
+      "incorrectSuccess": 0
+    },
+    {
+      "difference": 65,
+      "pattern": "timestamp-pair",
+      "trials": 10000,
+      "success": 9755,
+      "failed": 245,
+      "successPercent": 97.55,
+      "incorrectSuccess": 0
+    },
+    {
+      "difference": 70,
+      "pattern": "random128",
+      "trials": 10000,
+      "success": 8291,
+      "failed": 1709,
+      "successPercent": 82.91,
+      "incorrectSuccess": 0
+    },
+    {
+      "difference": 70,
+      "pattern": "timestamp-pair",
+      "trials": 10000,
+      "success": 8272,
+      "failed": 1728,
+      "successPercent": 82.72,
+      "incorrectSuccess": 0
+    },
+    {
+      "difference": 75,
+      "pattern": "random128",
+      "trials": 10000,
+      "success": 3811,
+      "failed": 6189,
+      "successPercent": 38.11,
+      "incorrectSuccess": 0
+    },
+    {
+      "difference": 75,
+      "pattern": "timestamp-pair",
+      "trials": 10000,
+      "success": 3814,
+      "failed": 6186,
+      "successPercent": 38.14,
+      "incorrectSuccess": 0
+    },
+    {
+      "difference": 80,
+      "pattern": "random128",
+      "trials": 10000,
+      "success": 391,
+      "failed": 9609,
+      "successPercent": 3.91,
+      "incorrectSuccess": 0
+    },
+    {
+      "difference": 80,
+      "pattern": "timestamp-pair",
+      "trials": 10000,
+      "success": 383,
+      "failed": 9617,
+      "successPercent": 3.83,
+      "incorrectSuccess": 0
+    },
+    {
+      "difference": 90,
+      "pattern": "random128",
+      "trials": 10000,
+      "success": 0,
+      "failed": 10000,
+      "successPercent": 0,
+      "incorrectSuccess": 0
+    },
+    {
+      "difference": 90,
+      "pattern": "timestamp-pair",
+      "trials": 10000,
+      "success": 0,
+      "failed": 10000,
+      "successPercent": 0,
+      "incorrectSuccess": 0
+    },
+    {
+      "difference": 100,
+      "pattern": "random128",
+      "trials": 10000,
+      "success": 0,
+      "failed": 10000,
+      "successPercent": 0,
+      "incorrectSuccess": 0
+    },
+    {
+      "difference": 100,
+      "pattern": "timestamp-pair",
+      "trials": 10000,
+      "success": 0,
+      "failed": 10000,
+      "successPercent": 0,
+      "incorrectSuccess": 0
+    }
+  ]
+}

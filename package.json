@@ -1,6 +1,6 @@
 {
   "name": "iblt-wasm",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "A WebAssembly-powered Invertible Bloom Lookup Table (IBLT) library for efficient set reconciliation in Node.js and browsers.",
   "type": "module",
   "files": [
@@ -16,7 +16,10 @@
   "license": "BSD-3-Clause",
   "main": "./dist/index.mjs",
   "exports": {
-    ".": "./dist/index.mjs"
+    ".": {
+      "browser": "./dist/browser/index.mjs",
+      "default": "./dist/index.mjs"
+    }
   },
   "scripts": {
     "build": "make",

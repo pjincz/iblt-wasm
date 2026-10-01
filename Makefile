@@ -12,12 +12,12 @@ export EM_CACHE := $(SDK_DIR)/upstream/emscripten/cache
 
 CXXFLAGS ?= -O3 -DNDEBUG -std=c++17
 EXPORTS := _malloc,_free,_iblt_create,_iblt_destroy,_iblt_clone,_iblt_fold,_iblt_update,_iblt_wire_size,_iblt_serialize,_iblt_serialize_folded,_iblt_deserialize,_iblt_decode,_iblt_result_count,_iblt_result_keys,_iblt_result_sides
-EMFLAGS := -sMODULARIZE=1 -sEXPORT_ES6=1 -sENVIRONMENT=node,web,worker \
+EMFLAGS := -sMODULARIZE=1 -sEXPORT_ES6=1 \
            -sALLOW_MEMORY_GROWTH=1 -sWASM_BIGINT=1 -sASSERTIONS=1 \
            -sEXPORTED_RUNTIME_METHODS=HEAPU8 -sEXPORTED_FUNCTIONS=$(EXPORTS)
 
 .PHONY: all test clean sdk
-all: dist/index.mjs dist/iblt.mjs dist/iblt.wasm
+all: dist/index.mjs dist/iblt.mjs dist/iblt.wasm dist/browser/index.mjs dist/browser/iblt.mjs dist/browser/iblt.wasm
 
 sdk: $(SDK_READY)
 
@@ -30,12 +30,18 @@ $(SDK_READY): emsdk/emsdk
 	@test "$$('$(EMXX)' -dumpversion)" = "$(SDK_VERSION)"
 	touch "$@"
 
-dist:
+dist dist/browser:
 	mkdir -p "$@"
 
 # One compiler invocation produces both files, including under make -j.
 dist/iblt.mjs dist/iblt.wasm &: src/cpp/iblt-wrapper.cpp src/cpp/iblt.h Makefile $(SDK_READY) | dist
-	"$(EMXX)" $(CXXFLAGS) src/cpp/iblt-wrapper.cpp $(EMFLAGS) -o dist/iblt.mjs
+	"$(EMXX)" $(CXXFLAGS) src/cpp/iblt-wrapper.cpp $(EMFLAGS) -sENVIRONMENT=node,web,worker -o dist/iblt.mjs
+
+dist/browser/iblt.mjs dist/browser/iblt.wasm &: src/cpp/iblt-wrapper.cpp src/cpp/iblt.h Makefile $(SDK_READY) | dist/browser
+	"$(EMXX)" $(CXXFLAGS) src/cpp/iblt-wrapper.cpp $(EMFLAGS) -sENVIRONMENT=web,worker -o dist/browser/iblt.mjs
+
+dist/browser/index.mjs: src/index.mjs Makefile | dist/browser
+	cp "$<" "$@"
 
 dist/index.mjs: src/index.mjs Makefile | dist
 	cp "$<" "$@"
